@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Werckmeister — #001–#002</title>
+<style>
+  :root {
+    --eggshell: #F0EAD6;
+    --radioactive-green: #39FF14;
+    --lab-green: #7CFF4F;
+    --bg: #0b0d0b;
+    --panel: #111511;
+    --muted: #b8b29f;
+    --border: rgba(240, 234, 214, 0.12);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(57,255,20,0.045), transparent 28%),
+      linear-gradient(180deg, #090b09 0%, #0b0d0b 48%, #080a08 100%);
+    color: var(--eggshell);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.75;
+    text-rendering: optimizeLegibility;
+  }
+
+  main {
+    width: min(920px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 64px 0 120px;
+  }
+
+  .story {
+    border: 1px solid var(--border);
+    background: rgba(17,21,17,0.82);
+    padding: clamp(28px, 5vw, 64px);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.42);
+  }
+
+  .title-block {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .title-block h1 {
+    margin: 0;
+    font-size: clamp(30px, 5vw, 52px);
+    letter-spacing: 0.08em;
+    font-weight: 700;
+  }
+
+  .title-block .subtitle {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .narration {
+    font-size: 16px;
+    margin: 0 0 18px;
+  }
+
+  .dialogue {
+    font-size: 20px;
+    margin: 0 0 18px;
+  }
+
+  .dialogue em,
+  .narration em { font-style: italic; }
+
+  .dialogue strong,
+  .narration strong { font-weight: 700; }
+
+  .section-heading {
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 0.035em;
+    margin: 58px 0 12px;
+  }
+
+  .chapter {
+    text-align: center;
+    font-size: 28px;
+    letter-spacing: 0.18em;
+    margin: 76px 0 34px;
+  }
+
+  .chapter-start {
+    text-align: center;
+    font-size: 44px;
+    letter-spacing: 0.15em;
+    margin: 18px 0 42px;
+  }
+
+  .asterisk-title {
+    text-align: center;
+    font-size: 22px;
+    margin: 32px 0;
+  }
+
+  .separator {
+    text-align: center;
+    opacity: 0.65;
+    margin: 26px 0;
+    letter-spacing: 0.2em;
+  }
+
+  .green {
+    color: var(--radioactive-green);
+    text-shadow: 0 0 7px rgba(57,255,20,0.34), 0 0 18px rgba(57,255,20,0.14);
+  }
+
+  .lab-green {
+    color: var(--lab-green);
+    text-shadow: 0 0 7px rgba(124,255,79,0.3);
+  }
+
+  .sky-event {
+    text-align: center;
+    margin: 22px 0;
+  }
+
+  .sky-event .line {
+    font-size: 20px;
+    margin: 8px 0;
+  }
+
+  .defend {
+    text-align: center;
+    margin: 32px 0 14px;
+    font-size: clamp(28px, 7vw, 56px);
+    font-weight: 900;
+    letter-spacing: 0.24em;
+    color: var(--radioactive-green);
+    text-shadow: 0 0 10px rgba(57,255,20,0.55), 0 0 32px rgba(57,255,20,0.22);
+  }
+
+  .final-word {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 28px;
+    color: var(--lab-green);
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 8px rgba(124,255,79,0.32);
+  }
+
+  .center { text-align: center; }
+
+  @media (max-width: 640px) {
+    main { width: calc(100% - 20px); padding: 20px 0 50px; }
+    .story { padding: 24px 18px 44px; }
+    .narration { font-size: 16px; }
+    .dialogue { font-size: 20px; }
+  }
+
+  @media print {
+    body { background: #fff; color: #000; }
+    .story { border: 0; box-shadow: none; background: #fff; }
+    .green, .lab-green, .defend, .final-word { color: #111; text-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <article class="story">
+
+    <header class="title-block">
+      <h1>Werckmeister</h1>
+      <div class="subtitle">Project Pluto — Chapters #001–#002</div>
+    </header>
+
+    <section>
+      <p class="narration">After the construction and testing of <strong>Project Pluto</strong> by the Russian scientist <strong>Ansel Wiseman</strong>, an ultra-nuclear project based on the behavior of xenon gas, the intention was to use the properties of <strong>xenon-135</strong> to create an extremely fast and precise control layer within a nuclear system with an extraordinarily high power density.</p>
+
+      <p class="narration">However, Wiseman's true objective was something almost no ordinary person knew about, while only certain governments possessed more complete information: the creation of a nuclear weapon whose behavior could be controlled more precisely and accurately.</p>
+
+      <p class="narration">One day, when the power of the reactor system was increased, the behavior of xenon deviated from what had been predicted. Both xenon consumption and its re-production increased dramatically, causing a severe change in neutron absorption. These changes led to extreme fluctuations in the system's power output.</p>
+
+      <p class="narration">Eventually, the massive increase in the system's power and temperature caused a thermal accident accompanied by enormous pressure, and the test site was almost completely destroyed. Nearly all documents related to Wiseman and Project Pluto were also lost, leaving behind only a few scattered pieces of evidence.</p>
+
+      <p class="narration">Even so, no one was certain that all the documents had truly been destroyed. Later, the possibility arose that part of the story surrounding the destruction of the records had been fabricated by governments in order to conceal the real information about the project and the accident. Because of this, even years later, no one knew how much of the official account was true and how much of it was a lie.</p>
+
+      <p class="narration">After the laboratory exploded, an enormous amount of xenon and <strong>cesium-137</strong> entered the river near the test site. The contamination gradually spread into the environment and the food chain. Fish fed on contaminated organisms and materials, and the contamination remained inside their bodies. The contaminated sturgeon then produced caviar, and that caviar, without anyone knowing that it was contaminated, entered the global market and was sold to people in restaurants around the world.</p>
+
+      <p class="narration">For nearly twenty years, this caviar caused illness and death among people across the world without the true cause ever being identified. Almost no one could imagine that one of the world's most expensive and luxurious foods was, in reality, part of a nuclear catastrophe.</p>
+
+      <p class="narration">During this time, a large portion of the world's wealthy population, who had greater access to these foods than anyone else, began dying at abnormal rates. In the end, approximately forty percent of humanity died from poisoning and the direct consequences of the contamination. Another twenty percent, who had survived the initial stage of poisoning, died in the following years due to radioactive materials remaining in their bodies and the damage they caused, including cancer.</p>
+
+      <p class="narration">In total, around sixty percent of humanity was wiped out, leaving only about <strong>3.32 billion people</strong>.</p>
+
+      <p class="narration">But this isn't even the beginning of the story.</p>
+
+      <p class="narration">The beginning of the story comes <strong>173 years later</strong>.</p>
+
+      <p class="narration">And that is where everything truly begins.</p>
+
+      <p class="asterisk-title"><strong><em>Can a child even be born in the apocalypse?</em></strong></p>
+    </section>
+
+    <h2 class="chapter-start">#001</h2>
+
+    <section>
+      <p class="narration">It wasn't the sound of radiation.</p>
+
+      <p class="narration">It was the crinkling sound of his mother's pill blister that woke him.</p>
+
+      <p class="dialogue">"You're sweating so much—<em>cough</em>—why did you sleep for so long? Are you dead?"</p>
+
+      <p class="narration">He opened his eyes, but what he saw was not what he should have been seeing.</p>
+
+      <p class="narration">For a moment, it seemed as though the sea itself were shining beneath the sun.</p>
+
+      <p class="narration">After hearing that voice, the only thing that came to his mind was anger.</p>
+
+      <p class="narration">The sun erupted.</p>
+
+      <p class="dialogue">"What? Why are you here? Doesn't Dad tell you every day that you need to rest? Don't all the doctors say the same thing? Why are you getting out of bed?"</p>
+
+      <p class="narration">Hadiel wondered what would happen if, one day, the sun were no longer there to shine upon them. Would the rain stop coming? Would plants stop growing?</p>
+
+      <p class="narration">Or perhaps... death.</p>
+
+      <p class="narration">Hadiel was still thinking about what he should say in response to his mother when she stared out the window at the sky beyond it.</p>
+
+      <p class="dialogue">"There are too many clouds in front of the sun."</p>
+
+      <p class="dialogue">"I was thinking about it. Your father and I are going to die soon, and you'll be left with Mortan.... <em>cough</em>... You have to look after her."</p>
+
+      <p class="narration">He was sitting on the bed, and he didn't know whether the sun was rising or setting. Even so, he reacted quietly to his mother's words about her own death.</p>
+
+      <p class="dialogue">"Death isn't something we can talk about that easily. Many people died because of a single egg—a single caviar egg. Many others died simply because they weren't lucky. I'm not the one who should be taking care of my sister. Once you and Dad are cured, you can look after her yourselves."</p>
+
+      <p class="narration">The smile on his face was one of satisfaction, but that didn't mean reality had a safe place within his philosophy of happiness.</p>
+
+      <p class="narration">He pushed the blanket aside and got out of bed. His mother left the room and asked him to join them at the table for breakfast.</p>
+
+      <p class="narration">That reassured him that it was still morning, and that the gloomy noon he had in mind was still waiting ahead.</p>
+
+      <p class="narration">Without making his bed or straightening his sleeping quarters, he got up and went outside. Beside a paradise of honey and jam sat a wilted flower.</p>
+
+      <p class="dialogue">"Mom, did you take your pill?"</p>
+
+      <p class="dialogue">"Is that really what you want to start breakfast with?"</p>
+
+      <p class="narration">That remark from his mother made him fall silent. His eyes landed on the spot where the pill had been, and seeing that it was gone, he felt relieved.</p>
+
+      <p class="narration">A few moments later, his father and Mortan joined them at the table. His father coughed somewhat more frequently than his mother when he spoke, but he seemed healthier.</p>
+
+      <p class="narration">Mortan, without giving anyone a chance to start eating, immediately began complaining.</p>
+
+      <p class="dialogue">"Everywhere I go, every moment, people look at me and say, 'She's the daughter of the freeloader.' Why can't they understand our situation? Aren't we both survivors? All it takes is one gram of contaminated food, and we're dead."</p>
+
+      <p class="narration">Everyone was silent, simply eating breakfast.</p>
+
+      <p class="narration">It almost seemed as though Mortan were talking to herself, but then, suddenly, she continued:</p>
+
+      <p class="dialogue">"I'm sure Hadiel has experienced all of it too. And he's at school, where there are even worse idiots. Right, Hadiel?"</p>
+
+      <p class="dialogue">"I'm talking to you, Hadiel. Come out of your thoughts."</p>
+
+      <p class="dialogue">"Mortan... just... please stop. I don't want to argue about this with you or Dad again. We all know what's right and what's wrong. You were even wrong about the one-gram thing being enough to kill us. So let's just eat our breakfast."</p>
+
+      <p class="narration">Their parents had no choice but to look at each other.</p>
+
+      <p class="narration">There was nothing they could really say or do in response, because it would only make things harder and prolong the argument.</p>
+
+      <p class="narration">Instead, their father tried to steer the conversation somewhere else.</p>
+
+      <p class="dialogue">"So, Hadiel, how's school? Did you manage to find the book you wanted?"</p>
+
+      <p class="dialogue">"Dad, let's assume I found it. How am I supposed to buy it? With what money? The same money the government won't give you unless you work for them? The same government that gives us contaminated resources under the name of a 'free allocation'?"</p>
+
+      <p class="narration">Hadiel finished his breakfast and thanked his mother for it.</p>
+
+      <p class="narration">This was nothing new.</p>
+
+      <p class="narration">The same subject came up at the table every day, and every day it ended the same way.</p>
+
+      <p class="separator">...</p>
+    </section>
+
+    <h2 class="section-heading">School Isn't Torture.</h2>
+    <h2 class="section-heading">It's Just Part of It.</h2>
+
+    <h2 class="chapter-start">#001.5</h2>
+
+    <section>
+      <p class="narration">Hadiel, despite all the experience he had gained from the philosophy of pain, still had to learn science.</p>
+
+      <p class="narration">For many people, school was torture.</p>
+
+      <p class="narration">But that wasn't how Hadiel saw it.</p>
+
+      <p class="narration">To him, school was simply part of the torture itself.</p>
+
+      <p class="narration">It wasn't his fault.</p>
+
+      <p class="narration">But despite all their problems, his life still wasn't quite as bad as it could have been.</p>
+
+      <p class="narration">Whenever he passed the abandoned park on his way to school, a place left deserted because of the cesium contamination, he always wondered what would have happened if Wiseman were still alive and could see the result of his work.</p>
+
+      <p class="narration">The sound of yellow leaves breaking beneath his feet, despite the fact that the trees were still young, reminded him of the death of children.</p>
+
+      <p class="narration">And the plants still smelled the way they had two hundred years ago.</p>
+
+      <p class="narration">The fruits still tasted the same, too.</p>
+
+      <p class="narration">The only difference was that you never knew how much longer you would live after eating that fruit beneath the shade of that tree.</p>
+
+      <p class="narration">The closer he got to school, the more he slowed his pace.</p>
+
+      <p class="narration">The smell of soil soaked by cesium rain was still just an ordinary smell, and somehow that was exactly what made Hadiel even more fascinated by nature.</p>
+
+      <p class="narration">He did his best not to step on a single leaf while walking through the park.</p>
+
+      <p class="narration">But—</p>
+
+      <p class="dialogue">"I don't want to think about Mortan and this whole suuuu—... crunch... crunch..."</p>
+
+      <p class="dialogue">"—"</p>
+
+      <p class="dialogue">"I think I killed someone."</p>
+    </section>
+
+    <h2 class="chapter-start">#002</h2>
+
+    <section>
+      <p class="narration">He climbed the front steps of the school.</p>
+
+      <p class="narration">It was relatively quiet, because not every family still had living members.</p>
+
+      <p class="narration">When he reached the entrance, he stopped and looked up at the upper windows.</p>
+
+      <p class="dialogue">"We don't have a teacher again?"</p>
+
+      <p class="narration">Then he entered the school.</p>
+
+      <p class="narration">It wasn't in that bad a condition.</p>
+
+      <p class="dialogue">"At least we have a library."</p>
+
+      <p class="narration">He was walking down the classroom corridor toward his own class when, suddenly, a hand landed on his shoulder.</p>
+
+      <p class="dialogue">"Hadiiiiiiiiiiiiiiiiiiiiel!"</p>
+
+      <p class="dialogue">"Why didn't you come yesterday?... <em>panting</em>... <em>panting</em>... We were all worried about you. We thought maybe—"</p>
+
+      <p class="narration">Hadiel knocked the hand off his shoulder.</p>
+
+      <p class="dialogue">"You mean all eight people in our class?"</p>
+
+      <p class="dialogue">"Whatever."</p>
+
+      <p class="narration">The two of them entered the classroom.</p>
+
+      <p class="narration">Nothing unusual was happening there.</p>
+
+      <p class="narration">It was just the usual situation.</p>
+
+      <p class="narration">Five girls and four boys made up the class in total.</p>
+
+      <p class="narration">But the decision of whether they came to school to learn or not was entirely up to them.</p>
+
+      <p class="narration">Hadiel didn't read because he was particularly interested in science.</p>
+
+      <p class="narration">He read because he was curious.</p>
+
+      <p class="narration">He walked up and stood in front of the board.</p>
+
+      <p class="narration">Without even clearing his throat, he said:</p>
+
+      <p class="dialogue">"You idiots have to read at least one section of history today."</p>
+
+      <p class="dialogue">"How can you stay alive without knowing anything about your past?"</p>
+
+      <p class="narration">To say he received no reaction would have been a lie.</p>
+
+      <p class="narration">Silence was a reaction too.</p>
+
+      <p class="narration">He pointed at the boy sitting in the middle of the classroom.</p>
+
+      <p class="dialogue">"Elyath, do you know why this is strange? Xenon only lives for five hou—"</p>
+
+      <p class="dialogue">"Look who's here. Hadiel the scientist. You planning to talk about this for the next fifty years too?"</p>
+
+      <p class="dialogue">"We don't need to read about this in a book to understand it. We see it in the news every day."</p>
+
+      <p class="narration">There was nothing particularly special about this conversation, really.</p>
+
+      <p class="narration">Elyath was supposed to be the school bully, but Hadiel was respected by everyone as well.</p>
+
+      <p class="narration">You couldn't even tell whether the exchange was serious or not.</p>
+
+      <p class="narration">Either way, Hadiel simply said,</p>
+
+      <p class="dialogue">"Hmm."</p>
+
+      <p class="narration">Then he put his bag on his desk and walked toward the library.</p>
+
+      <p class="narration">Elyath, as usual, sat down and continued reading his perverted comics.</p>
+
+      <p class="narration">The girls, who genuinely couldn't stand him, had left an entire row empty so that he would have to sit alone.</p>
+
+      <p class="narration">Aside from all of that, Hadiel had one friend who was always with him.</p>
+
+      <p class="narration"><strong>Flynn.</strong></p>
+
+      <p class="narration">Every day, the two of them went to the school library together because it was quiet, and because you could occasionally find things there that were genuinely difficult to find anywhere else.</p>
+
+      <p class="narration">As they walked down the stairs, the cold smell of the school seemed to suffocate them.</p>
+
+      <p class="dialogue">"Flynn, don't you think our school is a little too white and sterile?"</p>
+
+      <p class="dialogue">"Well, that's your opinion. But it's better for the economy this way."</p>
+
+      <p class="dialogue">"<em>Tch</em>... Is everything about money and the economy? This school is so dry that even the teachers refuse to come here because it's frightening. We probably don't even have sixty students if you add all the other classes together. You really look like an instruction manual that came with a product."</p>
+
+      <p class="dialogue">"I'll take that as a compliment."</p>
+
+      <p class="narration">Flynn walked ahead and looked around from the last step.</p>
+
+      <p class="narration">He looked at Hadiel and gave him a signal.</p>
+
+      <p class="dialogue">"No one's here yet. Come on."</p>
+
+      <p class="narration">Hadiel followed him.</p>
+
+      <p class="narration">They entered a relatively narrow hallway.</p>
+
+      <p class="narration">It wasn't exactly a secret place, and their reactions made that obvious.</p>
+
+      <p class="narration">They simply kept going until, after a while, they reached an open door.</p>
+
+      <p class="dialogue">"Aside from the terrible state of this school, this place smells nice. It feels like another world. Don't you think so, Hadiel?"</p>
+
+      <p class="narration">Hadiel walked over to one of the bookshelves and answered from there.</p>
+
+      <p class="dialogue">"The difference is like the surface of the sea compared to the bottom of the ocean. If there were just a little more light, it would be perfect."</p>
+
+      <p class="narration">Flynn clearly understood Hadiel's sense of humor, but he tried to change the subject because, in his opinion, those kinds of jokes were no place for a eulogy.</p>
+
+      <p class="dialogue">"I see. So you're going to finish the book today."</p>
+
+      <p class="narration">The book Flynn was referring to was called <strong>Werckmeister</strong>.</p>
+
+      <p class="narration">Even from its appearance, it was obvious that it was extremely old.</p>
+
+      <p class="narration">It had a dark, almost black cover with a strange sheen to it, yet it somehow didn't draw too much attention.</p>
+
+      <p class="narration">Maybe it would be better to understand its subject through Hadiel's eyes.</p>
+
+      <p class="dialogue">"Flynn, tell me. Have you ever seen a book with a design made of steel on its cover?"</p>
+
+      <p class="dialogue">"Steel?"</p>
+
+      <p class="dialogue">"Or a book whose subject you can't understand, where the deeper you go into it, the less you realize that you're already drowning?"</p>
+
+      <p class="dialogue">"A science built for adaptation. Adaptation makes the pressure at the surface of the sea and in the depths of the ocean, the heat of hell and the joy of heaven, all mean the same thing. Harmony."</p>
+
+      <p class="narration">Flynn had already become used to this way of speaking from Hadiel.</p>
+
+      <p class="narration">Not that he did it every day, but these were exactly the kinds of things Flynn had come to expect from him.</p>
+
+      <p class="dialogue">"Hadiel, you aren't scary at all."</p>
+    </section>
+
+    <h2 class="chapter-start">#002.5 — Defend</h2>
+
+    <section>
+      <p class="narration">The two of them seemed calm.</p>
+
+      <p class="narration">Maybe they weren't, not in their minds.</p>
+
+      <p class="narration">After all, a book could be judged neither by its cover nor by its first few pages.</p>
+
+      <p class="narration">Hadiel sat on a wooden bench in the library, doing everything he could to finish <strong>Werckmeister</strong>.</p>
+
+      <p class="narration">Flynn was still choosing a book, doing one-wheel tricks around the shelves.</p>
+
+      <p class="dialogue">"I've reached the last sentence..."</p>
+
+      <p class="narration">It sounded as though Hadiel was trying to imitate someone's voice. In a joking, mocking tone, he read:</p>
+
+      <p class="dialogue">"It says, 'To those who do not wound the strings of the heart in order to perfect them: suffering is for—'"</p>
+
+      <p class="narration">He suddenly stood up.</p>
+
+      <p class="narration">He looked around.</p>
+
+      <p class="narration">He was terrified.</p>
+
+      <p class="dialogue">"Flynn, did you hear that?"</p>
+
+      <p class="narration">Flynn pointed at himself.</p>
+
+      <p class="dialogue">"Are you talking to me?"</p>
+
+      <p class="narration">Hadiel left <strong>Werckmeister</strong> open and ran toward the exit.</p>
+
+      <p class="dialogue">"It sounded like someone moaning."</p>
+
+      <p class="narration">He left Flynn alone in the library and hurried outside.</p>
+
+      <p class="narration">The harder he breathed, the louder the moaning became.</p>
+
+      <p class="narration">From farther away, he could see Elyath and the others looking toward the sky from outside the door.</p>
+
+      <p class="narration">He left the corridor and ran toward the school's main entrance.</p>
+
+      <p class="narration">He went outside and looked up at the sky.</p>
+
+      <p class="narration">He expected everything to be normal, because somehow, whenever something shouldn't be normal, it always was.</p>
+
+      <p class="narration">But this time—</p>
+
+      <div class="sky-event">
+        <p class="line green">It wasn't.</p>
+      </div>
+
+      <p class="narration center">He was breathing heavily.</p>
+
+      <p class="narration center">He turned toward the sky.</p>
+
+      <p class="dialogue green center">"The sky— <em>panting</em>... <em>panting</em>... what the hell is this?"</p>
+
+      <p class="dialogue green center">"Why is the air so—so heavy?"</p>
+
+      <p class="narration">The reflection in his eyes gave away the unnatural green color of the sky.</p>
+
+      <p class="dialogue green center">"What happened?"</p>
+
+      <p class="narration">Flynn stepped up behind Hadiel and, in his usual tone, asked:</p>
+
+      <p class="dialogue">"Why are you all gathered here?"</p>
+
+      <p class="narration">Elyath turned and pointed at the sky.</p>
+
+      <p class="narration">Flynn's eyes widened instantly.</p>
+
+      <p class="narration">Everyone was looking at the sky.</p>
+
+      <p class="narration">But what had happened to it?</p>
+
+      <div class="sky-event green">
+        <p class="line">"Wh—why? Wha—what happened? The color of the sky—"</p>
+        <p class="line">"It's—it's falling—"</p>
+        <p class="line">"Warning to the entire city—"</p>
+        <p class="line">"The sky is cracking."</p>
+      </div>
+
+      <p class="defend">DEFEND</p>
+
+      <p class="separator">...</p>
+
+      <p class="final-word"><strong>Werckmeister</strong></p>
+    </section>
+
+  </article>
+</main>
+</body>
+</html>
