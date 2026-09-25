@@ -3,567 +3,1423 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Werckmeister — #001–#002</title>
+
+<title>Werckmeister — Project Pluto</title>
+
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@300;400;600;700&display=swap');
+
   :root {
     --eggshell: #F0EAD6;
-    --radioactive-green: #39FF14;
-    --lab-green: #7CFF4F;
-    --bg: #0b0d0b;
-    --panel: #111511;
-    --muted: #b8b29f;
-    --border: rgba(240, 234, 214, 0.12);
+    --background: #080A09;
+    --background-soft: #0D100E;
+    --green: #39FF14;
+    --green-soft: #7CFF68;
+    --muted: #A7AA9F;
+    --line: rgba(240, 234, 214, 0.13);
   }
 
-  * { box-sizing: border-box; }
+  * {
+    box-sizing: border-box;
+  }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+  }
 
   body {
     margin: 0;
     background:
-      radial-gradient(circle at 50% 0%, rgba(57,255,20,0.045), transparent 28%),
-      linear-gradient(180deg, #090b09 0%, #0b0d0b 48%, #080a08 100%);
+      radial-gradient(circle at top, rgba(57, 255, 20, 0.035), transparent 30%),
+      linear-gradient(to bottom, #060807, #090C0A 45%, #050706);
     color: var(--eggshell);
-    font-family: Georgia, "Times New Roman", serif;
-    line-height: 1.75;
-    text-rendering: optimizeLegibility;
+    font-family: "Merriweather", "Open Sans", sans-serif;
+    line-height: 1.95;
   }
 
   main {
-    width: min(920px, calc(100% - 40px));
-    margin: 0 auto;
-    padding: 64px 0 120px;
+    width: 100%;
+    padding: 40px 20px 90px;
   }
 
   .story {
-    border: 1px solid var(--border);
-    background: rgba(17,21,17,0.82);
-    padding: clamp(28px, 5vw, 64px);
-    box-shadow: 0 24px 80px rgba(0,0,0,0.42);
+    width: min(920px, 100%);
+    margin: 0 auto;
   }
 
   .title-block {
     text-align: center;
-    margin-bottom: 64px;
+    margin-bottom: 70px;
+    padding: 20px 10px 40px;
+    border-bottom: 1px solid var(--line);
   }
 
   .title-block h1 {
     margin: 0;
-    font-size: clamp(30px, 5vw, 52px);
+    color: var(--eggshell);
+    font-size: clamp(34px, 7vw, 58px);
+    line-height: 1.2;
     letter-spacing: 0.08em;
-    font-weight: 700;
+    font-weight: 900;
+    text-transform: none;
   }
 
-  .title-block .subtitle {
-    margin-top: 12px;
-    color: var(--muted);
+  .subtitle {
+    margin-top: 18px;
+    color: rgba(240, 234, 214, 0.58);
     font-size: 14px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
+  }
+
+  section {
+    margin: 0;
+  }
+
+  p {
+    margin-top: 0;
   }
 
   .narration {
     font-size: 16px;
-    margin: 0 0 18px;
+    color: var(--eggshell);
+    margin-bottom: 24px;
+    text-align: left;
+  }
+
+  .narration span,
+  .dialogue span,
+  .asterisk-title span,
+  .chapter-start span,
+  .section-heading span,
+  .separator span,
+  .final-word span,
+  .line span,
+  .defend span {
+    color: inherit;
   }
 
   .dialogue {
     font-size: 20px;
-    margin: 0 0 18px;
+    color: var(--eggshell);
+    margin: 30px 0;
+    line-height: 1.8;
+    padding-left: 28px;
+    border-left: 1px solid rgba(240, 234, 214, 0.16);
   }
 
-  .dialogue em,
-  .narration em { font-style: italic; }
-
-  .dialogue strong,
-  .narration strong { font-weight: 700; }
-
-  .section-heading {
-    text-align: center;
-    font-size: 24px;
-    letter-spacing: 0.035em;
-    margin: 58px 0 12px;
-  }
-
-  .chapter {
-    text-align: center;
-    font-size: 28px;
-    letter-spacing: 0.18em;
-    margin: 76px 0 34px;
-  }
-
-  .chapter-start {
-    text-align: center;
-    font-size: 44px;
-    letter-spacing: 0.15em;
-    margin: 18px 0 42px;
+  .dialogue em {
+    opacity: 0.8;
   }
 
   .asterisk-title {
     text-align: center;
+    margin: 62px 0 82px;
     font-size: 22px;
-    margin: 32px 0;
+    color: var(--eggshell);
+    line-height: 1.7;
+    letter-spacing: 0.03em;
+  }
+
+  .chapter-start {
+    margin: 80px 0 42px;
+    font-size: 31px;
+    line-height: 1.25;
+    color: var(--eggshell);
+    text-align: center;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+
+  .section-heading {
+    margin: 18px 0;
+    text-align: center;
+    color: var(--eggshell);
+    font-size: 27px;
+    line-height: 1.35;
+    font-weight: 900;
+    letter-spacing: 0.03em;
   }
 
   .separator {
     text-align: center;
-    opacity: 0.65;
-    margin: 26px 0;
-    letter-spacing: 0.2em;
+    margin: 70px 0;
+    color: rgba(240, 234, 214, 0.42);
+    font-size: 20px;
+    letter-spacing: 0.35em;
+  }
+
+  .center {
+    text-align: center;
   }
 
   .green {
-    color: var(--radioactive-green);
-    text-shadow: 0 0 7px rgba(57,255,20,0.34), 0 0 18px rgba(57,255,20,0.14);
-  }
-
-  .lab-green {
-    color: var(--lab-green);
-    text-shadow: 0 0 7px rgba(124,255,79,0.3);
+    color: var(--green) !important;
+    text-shadow:
+      0 0 5px rgba(57, 255, 20, 0.4),
+      0 0 15px rgba(57, 255, 20, 0.16);
   }
 
   .sky-event {
+    margin: 40px 0;
     text-align: center;
-    margin: 22px 0;
   }
 
   .sky-event .line {
-    font-size: 20px;
-    margin: 8px 0;
+    font-size: 21px;
+    line-height: 2;
+    margin: 12px 0;
+    color: var(--green);
+    text-shadow:
+      0 0 6px rgba(57, 255, 20, 0.4),
+      0 0 18px rgba(57, 255, 20, 0.12);
   }
 
   .defend {
+    margin: 75px 0 30px;
     text-align: center;
-    margin: 32px 0 14px;
-    font-size: clamp(28px, 7vw, 56px);
+    color: var(--green);
+    font-size: clamp(40px, 9vw, 82px);
     font-weight: 900;
-    letter-spacing: 0.24em;
-    color: var(--radioactive-green);
-    text-shadow: 0 0 10px rgba(57,255,20,0.55), 0 0 32px rgba(57,255,20,0.22);
+    letter-spacing: 0.2em;
+    line-height: 1;
+    text-shadow:
+      0 0 8px rgba(57, 255, 20, 0.75),
+      0 0 28px rgba(57, 255, 20, 0.35),
+      0 0 60px rgba(57, 255, 20, 0.12);
   }
 
   .final-word {
     text-align: center;
-    margin-top: 22px;
-    font-size: 28px;
-    color: var(--lab-green);
-    letter-spacing: 0.1em;
-    text-shadow: 0 0 8px rgba(124,255,79,0.32);
+    margin-top: 55px;
+    font-size: 31px;
+    letter-spacing: 0.08em;
+    color: var(--eggshell);
   }
 
-  .center { text-align: center; }
-
-  @media (max-width: 640px) {
-    main { width: calc(100% - 20px); padding: 20px 0 50px; }
-    .story { padding: 24px 18px 44px; }
-    .narration { font-size: 16px; }
-    .dialogue { font-size: 20px; }
+  strong {
+    font-weight: 900;
   }
 
-  @media print {
-    body { background: #fff; color: #000; }
-    .story { border: 0; box-shadow: none; background: #fff; }
-    .green, .lab-green, .defend, .final-word { color: #111; text-shadow: none; }
+  @media (max-width: 700px) {
+    main {
+      padding: 26px 16px 65px;
+    }
+
+    .title-block {
+      margin-bottom: 48px;
+    }
+
+    .narration {
+      font-size: 16px;
+      line-height: 1.9;
+      margin-bottom: 21px;
+    }
+
+    .dialogue {
+      font-size: 20px;
+      padding-left: 18px;
+      line-height: 1.75;
+      margin: 25px 0;
+    }
+
+    .chapter-start {
+      font-size: 27px;
+      margin-top: 62px;
+    }
+
+    .section-heading {
+      font-size: 23px;
+    }
+
+    .asterisk-title {
+      font-size: 20px;
+    }
+
+    .defend {
+      letter-spacing: 0.1em;
+    }
   }
 </style>
 </head>
+
 <body>
+
+<p>&nbsp;</p>
+
 <main>
-  <article class="story">
-
-    <header class="title-block">
-      <h1>Werckmeister</h1>
-      <div class="subtitle">Project Pluto — Chapters #001–#002</div>
-    </header>
-
-    <section>
-      <p class="narration">After the construction and testing of <strong>Project Pluto</strong> by the Russian scientist <strong>Ansel Wiseman</strong>, an ultra-nuclear project based on the behavior of xenon gas, the intention was to use the properties of <strong>xenon-135</strong> to create an extremely fast and precise control layer within a nuclear system with an extraordinarily high power density.</p>
-
-      <p class="narration">However, Wiseman's true objective was something almost no ordinary person knew about, while only certain governments possessed more complete information: the creation of a nuclear weapon whose behavior could be controlled more precisely and accurately.</p>
-
-      <p class="narration">One day, when the power of the reactor system was increased, the behavior of xenon deviated from what had been predicted. Both xenon consumption and its re-production increased dramatically, causing a severe change in neutron absorption. These changes led to extreme fluctuations in the system's power output.</p>
-
-      <p class="narration">Eventually, the massive increase in the system's power and temperature caused a thermal accident accompanied by enormous pressure, and the test site was almost completely destroyed. Nearly all documents related to Wiseman and Project Pluto were also lost, leaving behind only a few scattered pieces of evidence.</p>
-
-      <p class="narration">Even so, no one was certain that all the documents had truly been destroyed. Later, the possibility arose that part of the story surrounding the destruction of the records had been fabricated by governments in order to conceal the real information about the project and the accident. Because of this, even years later, no one knew how much of the official account was true and how much of it was a lie.</p>
-
-      <p class="narration">After the laboratory exploded, an enormous amount of xenon and <strong>cesium-137</strong> entered the river near the test site. The contamination gradually spread into the environment and the food chain. Fish fed on contaminated organisms and materials, and the contamination remained inside their bodies. The contaminated sturgeon then produced caviar, and that caviar, without anyone knowing that it was contaminated, entered the global market and was sold to people in restaurants around the world.</p>
-
-      <p class="narration">For nearly twenty years, this caviar caused illness and death among people across the world without the true cause ever being identified. Almost no one could imagine that one of the world's most expensive and luxurious foods was, in reality, part of a nuclear catastrophe.</p>
-
-      <p class="narration">During this time, a large portion of the world's wealthy population, who had greater access to these foods than anyone else, began dying at abnormal rates. In the end, approximately forty percent of humanity died from poisoning and the direct consequences of the contamination. Another twenty percent, who had survived the initial stage of poisoning, died in the following years due to radioactive materials remaining in their bodies and the damage they caused, including cancer.</p>
-
-      <p class="narration">In total, around sixty percent of humanity was wiped out, leaving only about <strong>3.32 billion people</strong>.</p>
-
-      <p class="narration">But this isn't even the beginning of the story.</p>
-
-      <p class="narration">The beginning of the story comes <strong>173 years later</strong>.</p>
-
-      <p class="narration">And that is where everything truly begins.</p>
-
-      <p class="asterisk-title"><strong><em>Can a child even be born in the apocalypse?</em></strong></p>
-    </section>
-
-    <h2 class="chapter-start">#001</h2>
-
-    <section>
-      <p class="narration">It wasn't the sound of radiation.</p>
-
-      <p class="narration">It was the crinkling sound of his mother's pill blister that woke him.</p>
-
-      <p class="dialogue">"You're sweating so much—<em>cough</em>—why did you sleep for so long? Are you dead?"</p>
-
-      <p class="narration">He opened his eyes, but what he saw was not what he should have been seeing.</p>
-
-      <p class="narration">For a moment, it seemed as though the sea itself were shining beneath the sun.</p>
-
-      <p class="narration">After hearing that voice, the only thing that came to his mind was anger.</p>
-
-      <p class="narration">The sun erupted.</p>
-
-      <p class="dialogue">"What? Why are you here? Doesn't Dad tell you every day that you need to rest? Don't all the doctors say the same thing? Why are you getting out of bed?"</p>
-
-      <p class="narration">Hadiel wondered what would happen if, one day, the sun were no longer there to shine upon them. Would the rain stop coming? Would plants stop growing?</p>
-
-      <p class="narration">Or perhaps... death.</p>
-
-      <p class="narration">Hadiel was still thinking about what he should say in response to his mother when she stared out the window at the sky beyond it.</p>
-
-      <p class="dialogue">"There are too many clouds in front of the sun."</p>
-
-      <p class="dialogue">"I was thinking about it. Your father and I are going to die soon, and you'll be left with Mortan.... <em>cough</em>... You have to look after her."</p>
-
-      <p class="narration">He was sitting on the bed, and he didn't know whether the sun was rising or setting. Even so, he reacted quietly to his mother's words about her own death.</p>
-
-      <p class="dialogue">"Death isn't something we can talk about that easily. Many people died because of a single egg—a single caviar egg. Many others died simply because they weren't lucky. I'm not the one who should be taking care of my sister. Once you and Dad are cured, you can look after her yourselves."</p>
-
-      <p class="narration">The smile on his face was one of satisfaction, but that didn't mean reality had a safe place within his philosophy of happiness.</p>
-
-      <p class="narration">He pushed the blanket aside and got out of bed. His mother left the room and asked him to join them at the table for breakfast.</p>
-
-      <p class="narration">That reassured him that it was still morning, and that the gloomy noon he had in mind was still waiting ahead.</p>
-
-      <p class="narration">Without making his bed or straightening his sleeping quarters, he got up and went outside. Beside a paradise of honey and jam sat a wilted flower.</p>
-
-      <p class="dialogue">"Mom, did you take your pill?"</p>
-
-      <p class="dialogue">"Is that really what you want to start breakfast with?"</p>
-
-      <p class="narration">That remark from his mother made him fall silent. His eyes landed on the spot where the pill had been, and seeing that it was gone, he felt relieved.</p>
-
-      <p class="narration">A few moments later, his father and Mortan joined them at the table. His father coughed somewhat more frequently than his mother when he spoke, but he seemed healthier.</p>
-
-      <p class="narration">Mortan, without giving anyone a chance to start eating, immediately began complaining.</p>
-
-      <p class="dialogue">"Everywhere I go, every moment, people look at me and say, 'She's the daughter of the freeloader.' Why can't they understand our situation? Aren't we both survivors? All it takes is one gram of contaminated food, and we're dead."</p>
-
-      <p class="narration">Everyone was silent, simply eating breakfast.</p>
-
-      <p class="narration">It almost seemed as though Mortan were talking to herself, but then, suddenly, she continued:</p>
-
-      <p class="dialogue">"I'm sure Hadiel has experienced all of it too. And he's at school, where there are even worse idiots. Right, Hadiel?"</p>
-
-      <p class="dialogue">"I'm talking to you, Hadiel. Come out of your thoughts."</p>
-
-      <p class="dialogue">"Mortan... just... please stop. I don't want to argue about this with you or Dad again. We all know what's right and what's wrong. You were even wrong about the one-gram thing being enough to kill us. So let's just eat our breakfast."</p>
-
-      <p class="narration">Their parents had no choice but to look at each other.</p>
-
-      <p class="narration">There was nothing they could really say or do in response, because it would only make things harder and prolong the argument.</p>
-
-      <p class="narration">Instead, their father tried to steer the conversation somewhere else.</p>
-
-      <p class="dialogue">"So, Hadiel, how's school? Did you manage to find the book you wanted?"</p>
-
-      <p class="dialogue">"Dad, let's assume I found it. How am I supposed to buy it? With what money? The same money the government won't give you unless you work for them? The same government that gives us contaminated resources under the name of a 'free allocation'?"</p>
-
-      <p class="narration">Hadiel finished his breakfast and thanked his mother for it.</p>
-
-      <p class="narration">This was nothing new.</p>
-
-      <p class="narration">The same subject came up at the table every day, and every day it ended the same way.</p>
-
-      <p class="separator">...</p>
-    </section>
-
-    <h2 class="section-heading">School Isn't Torture.</h2>
-    <h2 class="section-heading">It's Just Part of It.</h2>
-
-    <h2 class="chapter-start">#001.5</h2>
-
-    <section>
-      <p class="narration">Hadiel, despite all the experience he had gained from the philosophy of pain, still had to learn science.</p>
-
-      <p class="narration">For many people, school was torture.</p>
-
-      <p class="narration">But that wasn't how Hadiel saw it.</p>
-
-      <p class="narration">To him, school was simply part of the torture itself.</p>
-
-      <p class="narration">It wasn't his fault.</p>
-
-      <p class="narration">But despite all their problems, his life still wasn't quite as bad as it could have been.</p>
-
-      <p class="narration">Whenever he passed the abandoned park on his way to school, a place left deserted because of the cesium contamination, he always wondered what would have happened if Wiseman were still alive and could see the result of his work.</p>
-
-      <p class="narration">The sound of yellow leaves breaking beneath his feet, despite the fact that the trees were still young, reminded him of the death of children.</p>
-
-      <p class="narration">And the plants still smelled the way they had two hundred years ago.</p>
-
-      <p class="narration">The fruits still tasted the same, too.</p>
-
-      <p class="narration">The only difference was that you never knew how much longer you would live after eating that fruit beneath the shade of that tree.</p>
-
-      <p class="narration">The closer he got to school, the more he slowed his pace.</p>
-
-      <p class="narration">The smell of soil soaked by cesium rain was still just an ordinary smell, and somehow that was exactly what made Hadiel even more fascinated by nature.</p>
-
-      <p class="narration">He did his best not to step on a single leaf while walking through the park.</p>
-
-      <p class="narration">But—</p>
-
-      <p class="dialogue">"I don't want to think about Mortan and this whole suuuu—... crunch... crunch..."</p>
-
-      <p class="dialogue">"—"</p>
-
-      <p class="dialogue">"I think I killed someone."</p>
-    </section>
-
-    <h2 class="chapter-start">#002</h2>
-
-    <section>
-      <p class="narration">He climbed the front steps of the school.</p>
-
-      <p class="narration">It was relatively quiet, because not every family still had living members.</p>
-
-      <p class="narration">When he reached the entrance, he stopped and looked up at the upper windows.</p>
-
-      <p class="dialogue">"We don't have a teacher again?"</p>
-
-      <p class="narration">Then he entered the school.</p>
-
-      <p class="narration">It wasn't in that bad a condition.</p>
-
-      <p class="dialogue">"At least we have a library."</p>
-
-      <p class="narration">He was walking down the classroom corridor toward his own class when, suddenly, a hand landed on his shoulder.</p>
-
-      <p class="dialogue">"Hadiiiiiiiiiiiiiiiiiiiiel!"</p>
-
-      <p class="dialogue">"Why didn't you come yesterday?... <em>panting</em>... <em>panting</em>... We were all worried about you. We thought maybe—"</p>
-
-      <p class="narration">Hadiel knocked the hand off his shoulder.</p>
-
-      <p class="dialogue">"You mean all eight people in our class?"</p>
-
-      <p class="dialogue">"Whatever."</p>
-
-      <p class="narration">The two of them entered the classroom.</p>
-
-      <p class="narration">Nothing unusual was happening there.</p>
-
-      <p class="narration">It was just the usual situation.</p>
-
-      <p class="narration">Five girls and four boys made up the class in total.</p>
-
-      <p class="narration">But the decision of whether they came to school to learn or not was entirely up to them.</p>
-
-      <p class="narration">Hadiel didn't read because he was particularly interested in science.</p>
-
-      <p class="narration">He read because he was curious.</p>
-
-      <p class="narration">He walked up and stood in front of the board.</p>
-
-      <p class="narration">Without even clearing his throat, he said:</p>
-
-      <p class="dialogue">"You idiots have to read at least one section of history today."</p>
-
-      <p class="dialogue">"How can you stay alive without knowing anything about your past?"</p>
-
-      <p class="narration">To say he received no reaction would have been a lie.</p>
-
-      <p class="narration">Silence was a reaction too.</p>
-
-      <p class="narration">He pointed at the boy sitting in the middle of the classroom.</p>
-
-      <p class="dialogue">"Elyath, do you know why this is strange? Xenon only lives for five hou—"</p>
-
-      <p class="dialogue">"Look who's here. Hadiel the scientist. You planning to talk about this for the next fifty years too?"</p>
-
-      <p class="dialogue">"We don't need to read about this in a book to understand it. We see it in the news every day."</p>
-
-      <p class="narration">There was nothing particularly special about this conversation, really.</p>
-
-      <p class="narration">Elyath was supposed to be the school bully, but Hadiel was respected by everyone as well.</p>
-
-      <p class="narration">You couldn't even tell whether the exchange was serious or not.</p>
-
-      <p class="narration">Either way, Hadiel simply said,</p>
-
-      <p class="dialogue">"Hmm."</p>
-
-      <p class="narration">Then he put his bag on his desk and walked toward the library.</p>
-
-      <p class="narration">Elyath, as usual, sat down and continued reading his perverted comics.</p>
-
-      <p class="narration">The girls, who genuinely couldn't stand him, had left an entire row empty so that he would have to sit alone.</p>
-
-      <p class="narration">Aside from all of that, Hadiel had one friend who was always with him.</p>
-
-      <p class="narration"><strong>Flynn.</strong></p>
-
-      <p class="narration">Every day, the two of them went to the school library together because it was quiet, and because you could occasionally find things there that were genuinely difficult to find anywhere else.</p>
-
-      <p class="narration">As they walked down the stairs, the cold smell of the school seemed to suffocate them.</p>
-
-      <p class="dialogue">"Flynn, don't you think our school is a little too white and sterile?"</p>
-
-      <p class="dialogue">"Well, that's your opinion. But it's better for the economy this way."</p>
-
-      <p class="dialogue">"<em>Tch</em>... Is everything about money and the economy? This school is so dry that even the teachers refuse to come here because it's frightening. We probably don't even have sixty students if you add all the other classes together. You really look like an instruction manual that came with a product."</p>
-
-      <p class="dialogue">"I'll take that as a compliment."</p>
-
-      <p class="narration">Flynn walked ahead and looked around from the last step.</p>
-
-      <p class="narration">He looked at Hadiel and gave him a signal.</p>
-
-      <p class="dialogue">"No one's here yet. Come on."</p>
-
-      <p class="narration">Hadiel followed him.</p>
-
-      <p class="narration">They entered a relatively narrow hallway.</p>
-
-      <p class="narration">It wasn't exactly a secret place, and their reactions made that obvious.</p>
-
-      <p class="narration">They simply kept going until, after a while, they reached an open door.</p>
-
-      <p class="dialogue">"Aside from the terrible state of this school, this place smells nice. It feels like another world. Don't you think so, Hadiel?"</p>
-
-      <p class="narration">Hadiel walked over to one of the bookshelves and answered from there.</p>
-
-      <p class="dialogue">"The difference is like the surface of the sea compared to the bottom of the ocean. If there were just a little more light, it would be perfect."</p>
-
-      <p class="narration">Flynn clearly understood Hadiel's sense of humor, but he tried to change the subject because, in his opinion, those kinds of jokes were no place for a eulogy.</p>
-
-      <p class="dialogue">"I see. So you're going to finish the book today."</p>
-
-      <p class="narration">The book Flynn was referring to was called <strong>Werckmeister</strong>.</p>
-
-      <p class="narration">Even from its appearance, it was obvious that it was extremely old.</p>
-
-      <p class="narration">It had a dark, almost black cover with a strange sheen to it, yet it somehow didn't draw too much attention.</p>
-
-      <p class="narration">Maybe it would be better to understand its subject through Hadiel's eyes.</p>
-
-      <p class="dialogue">"Flynn, tell me. Have you ever seen a book with a design made of steel on its cover?"</p>
-
-      <p class="dialogue">"Steel?"</p>
-
-      <p class="dialogue">"Or a book whose subject you can't understand, where the deeper you go into it, the less you realize that you're already drowning?"</p>
-
-      <p class="dialogue">"A science built for adaptation. Adaptation makes the pressure at the surface of the sea and in the depths of the ocean, the heat of hell and the joy of heaven, all mean the same thing. Harmony."</p>
-
-      <p class="narration">Flynn had already become used to this way of speaking from Hadiel.</p>
-
-      <p class="narration">Not that he did it every day, but these were exactly the kinds of things Flynn had come to expect from him.</p>
-
-      <p class="dialogue">"Hadiel, you aren't scary at all."</p>
-    </section>
-
-    <h2 class="chapter-start">#002.5 — Defend</h2>
-
-    <section>
-      <p class="narration">The two of them seemed calm.</p>
-
-      <p class="narration">Maybe they weren't, not in their minds.</p>
-
-      <p class="narration">After all, a book could be judged neither by its cover nor by its first few pages.</p>
-
-      <p class="narration">Hadiel sat on a wooden bench in the library, doing everything he could to finish <strong>Werckmeister</strong>.</p>
-
-      <p class="narration">Flynn was still choosing a book, doing one-wheel tricks around the shelves.</p>
-
-      <p class="dialogue">"I've reached the last sentence..."</p>
-
-      <p class="narration">It sounded as though Hadiel was trying to imitate someone's voice. In a joking, mocking tone, he read:</p>
-
-      <p class="dialogue">"It says, 'To those who do not wound the strings of the heart in order to perfect them: suffering is for—'"</p>
-
-      <p class="narration">He suddenly stood up.</p>
-
-      <p class="narration">He looked around.</p>
-
-      <p class="narration">He was terrified.</p>
-
-      <p class="dialogue">"Flynn, did you hear that?"</p>
-
-      <p class="narration">Flynn pointed at himself.</p>
-
-      <p class="dialogue">"Are you talking to me?"</p>
-
-      <p class="narration">Hadiel left <strong>Werckmeister</strong> open and ran toward the exit.</p>
-
-      <p class="dialogue">"It sounded like someone moaning."</p>
-
-      <p class="narration">He left Flynn alone in the library and hurried outside.</p>
-
-      <p class="narration">The harder he breathed, the louder the moaning became.</p>
-
-      <p class="narration">From farther away, he could see Elyath and the others looking toward the sky from outside the door.</p>
-
-      <p class="narration">He left the corridor and ran toward the school's main entrance.</p>
-
-      <p class="narration">He went outside and looked up at the sky.</p>
-
-      <p class="narration">He expected everything to be normal, because somehow, whenever something shouldn't be normal, it always was.</p>
-
-      <p class="narration">But this time—</p>
-
-      <div class="sky-event">
-        <p class="line green">It wasn't.</p>
-      </div>
-
-      <p class="narration center">He was breathing heavily.</p>
-
-      <p class="narration center">He turned toward the sky.</p>
-
-      <p class="dialogue green center">"The sky— <em>panting</em>... <em>panting</em>... what the hell is this?"</p>
-
-      <p class="dialogue green center">"Why is the air so—so heavy?"</p>
-
-      <p class="narration">The reflection in his eyes gave away the unnatural green color of the sky.</p>
-
-      <p class="dialogue green center">"What happened?"</p>
-
-      <p class="narration">Flynn stepped up behind Hadiel and, in his usual tone, asked:</p>
-
-      <p class="dialogue">"Why are you all gathered here?"</p>
-
-      <p class="narration">Elyath turned and pointed at the sky.</p>
-
-      <p class="narration">Flynn's eyes widened instantly.</p>
-
-      <p class="narration">Everyone was looking at the sky.</p>
-
-      <p class="narration">But what had happened to it?</p>
-
-      <div class="sky-event green">
-        <p class="line">"Wh—why? Wha—what happened? The color of the sky—"</p>
-        <p class="line">"It's—it's falling—"</p>
-        <p class="line">"Warning to the entire city—"</p>
-        <p class="line">"The sky is cracking."</p>
-      </div>
-
-      <p class="defend">DEFEND</p>
-
-      <p class="separator">...</p>
-
-      <p class="final-word"><strong>Werckmeister</strong></p>
-    </section>
-
-  </article>
+<article class="story">
+
+<header class="title-block">
+  <h1>
+    <span style="font-family: merriweather, 'open sans', sans-serif; font-size:58px; color:#F0EAD6;">
+      Werckmeister
+    </span>
+  </h1>
+
+  <div class="subtitle">
+    <span style="font-family: merriweather, 'open sans', sans-serif; color:#F0EAD6;">
+      Project Pluto &mdash; Chapters #001&ndash;#002
+    </span>
+  </div>
+</header>
+
+<section>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+After the construction and testing of <strong>Project Pluto</strong> by the Russian scientist <strong>Ansel Wiseman</strong>, an ultra-nuclear project based on the behavior of xenon gas, the intention was to use the properties of <strong>xenon-135</strong> to create an extremely fast and precise control layer within a nuclear system with an extraordinarily high power density.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+However, Wiseman's true objective was something almost no ordinary person knew about, while only certain governments possessed more complete information: the creation of a nuclear weapon whose behavior could be controlled more precisely and accurately.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+One day, when the power of the reactor system was increased, the behavior of xenon deviated from what had been predicted. Both xenon consumption and its re-production increased dramatically, causing a severe change in neutron absorption. These changes led to extreme fluctuations in the system's power output.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Eventually, the massive increase in the system's power and temperature caused a thermal accident accompanied by enormous pressure, and the test site was almost completely destroyed. Nearly all documents related to Wiseman and Project Pluto were also lost, leaving behind only a few scattered pieces of evidence.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Even so, no one was certain that all the documents had truly been destroyed. Later, the possibility arose that part of the story surrounding the destruction of the records had been fabricated by governments in order to conceal the real information about the project and the accident. Because of this, even years later, no one knew how much of the official account was true and how much of it was a lie.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+After the laboratory exploded, an enormous amount of xenon and <strong>cesium-137</strong> entered the river near the test site. The contamination gradually spread into the environment and the food chain. Fish fed on contaminated organisms and materials, and the contamination remained inside their bodies. The contaminated sturgeon then produced caviar, and that caviar, without anyone knowing that it was contaminated, entered the global market and was sold to people in restaurants around the world.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+For nearly twenty years, this caviar caused illness and death among people across the world without the true cause ever being identified. Almost no one could imagine that one of the world's most expensive and luxurious foods was, in reality, part of a nuclear catastrophe.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+During this time, a large portion of the world's wealthy population, who had greater access to these foods than anyone else, began dying at abnormal rates. In the end, approximately forty percent of humanity died from poisoning and the direct consequences of the contamination. Another twenty percent, who had survived the initial stage of poisoning, died in the following years due to radioactive materials remaining in their bodies and the damage they caused, including cancer.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+In total, around sixty percent of humanity was wiped out, leaving only about <strong>3.32 billion people</strong>.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+But this isn't even the beginning of the story.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+The beginning of the story comes <strong>173 years later</strong>.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+And that is where everything truly begins.
+</span>
+</p>
+
+<p class="asterisk-title">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:22px; color:#F0EAD6;">
+<strong><em>Can a child even be born in the apocalypse?</em></strong>
+</span>
+</p>
+
+</section>
+
+<h2 class="chapter-start">
+<span style="font-family: merriweather, 'open sans', sans-serif; color:#F0EAD6;">
+#001
+</span>
+</h2>
+
+<section>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+It wasn't the sound of radiation.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+It was the crinkling sound of his mother's pill blister that woke him.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"You're sweating so much&mdash;<em>cough</em>&mdash;why did you sleep for so long? Are you dead?"
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He opened his eyes, but what he saw was not what he should have been seeing.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+For a moment, it seemed as though the sea itself were shining beneath the sun.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+After hearing that voice, the only thing that came to his mind was anger.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+The sun erupted.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"What? Why are you here? Doesn't Dad tell you every day that you need to rest? Don't all the doctors say the same thing? Why are you getting out of bed?"
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Hadiel wondered what would happen if, one day, the sun were no longer there to shine upon them. Would the rain stop coming? Would plants stop growing?
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Or perhaps... death.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Hadiel was still thinking about what he should say in response to his mother when she stared out the window at the sky beyond it.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"There are too many clouds in front of the sun."
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"I was thinking about it. Your father and I are going to die soon, and you'll be left with Mortan.... <em>cough</em>... You have to look after her."
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He was sitting on the bed, and he didn't know whether the sun was rising or setting. Even so, he reacted quietly to his mother's words about her own death.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Death isn't something we can talk about that easily. Many people died because of a single egg&mdash;a single caviar egg. Many others died simply because they weren't lucky. I'm not the one who should be taking care of my sister. Once you and Dad are cured, you can look after her yourselves."
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+The smile on his face was one of satisfaction, but that didn't mean reality had a safe place within his philosophy of happiness.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He pushed the blanket aside and got out of bed. His mother left the room and asked him to join them at the table for breakfast.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+That reassured him that it was still morning, and that the gloomy noon he had in mind was still waiting ahead.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Without making his bed or straightening his sleeping quarters, he got up and went outside. Beside a paradise of honey and jam sat a wilted flower.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Mom, did you take your pill?"
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Is that really what you want to start breakfast with?"
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+That remark from his mother made him fall silent. His eyes landed on the spot where the pill had been, and seeing that it was gone, he felt relieved.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+A few moments later, his father and Mortan joined them at the table. His father coughed somewhat more frequently than his mother when he spoke, but he seemed healthier.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Mortan, without giving anyone a chance to start eating, immediately began complaining.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Everywhere I go, every moment, people look at me and say, 'She's the daughter of the freeloader.' Why can't they understand our situation? Aren't we both survivors? All it takes is one gram of contaminated food, and we're dead."
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Everyone was silent, simply eating breakfast.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+It almost seemed as though Mortan were talking to herself, but then, suddenly, she continued:
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"I'm sure Hadiel has experienced all of it too. And he's at school, where there are even worse idiots. Right, Hadiel?"
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"I'm talking to you, Hadiel. Come out of your thoughts."
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Mortan... just... please stop. I don't want to argue about this with you or Dad again. We all know what's right and what's wrong. You were even wrong about the one-gram thing being enough to kill us. So let's just eat our breakfast."
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Their parents had no choice but to look at each other.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+There was nothing they could really say or do in response, because it would only make things harder and prolong the argument.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Instead, their father tried to steer the conversation somewhere else.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"So, Hadiel, how's school? Did you manage to find the book you wanted?"
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Dad, let's assume I found it. How am I supposed to buy it? With what money? The same money the government won't give you unless you work for them? The same government that gives us contaminated resources under the name of a 'free allocation'?"
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Hadiel finished his breakfast and thanked his mother for it.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+This was nothing new.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+The same subject came up at the table every day, and every day it ended the same way.
+</span>
+</p>
+
+<p class="separator">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+...
+</span>
+</p>
+
+</section>
+
+<h2 class="section-heading">
+<span style="font-family: merriweather, 'open sans', sans-serif; color:#F0EAD6;">
+School Isn't Torture.
+</span>
+</h2>
+
+<h2 class="section-heading">
+<span style="font-family: merriweather, 'open sans', sans-serif; color:#F0EAD6;">
+It's Just Part of It.
+</span>
+</h2>
+
+<h2 class="chapter-start">
+<span style="font-family: merriweather, 'open sans', sans-serif; color:#F0EAD6;">
+#001.5
+</span>
+</h2>
+
+<section>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Hadiel, despite all the experience he had gained from the philosophy of pain, still had to learn science.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+For many people, school was torture.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+But that wasn't how Hadiel saw it.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+To him, school was simply part of the torture itself.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+It wasn't his fault.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+But despite all their problems, his life still wasn't quite as bad as it could have been.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Whenever he passed the abandoned park on his way to school, a place left deserted because of the cesium contamination, he always wondered what would have happened if Wiseman were still alive and could see the result of his work.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+The sound of yellow leaves breaking beneath his feet, despite the fact that the trees were still young, reminded him of the death of children.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+And the plants still smelled the way they had two hundred years ago.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+The fruits still tasted the same, too.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+The only difference was that you never knew how much longer you would live after eating that fruit beneath the shade of that tree.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+The closer he got to school, the more he slowed his pace.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+The smell of soil soaked by cesium rain was still just an ordinary smell, and somehow that was exactly what made Hadiel even more fascinated by nature.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He did his best not to step on a single leaf while walking through the park.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+But&mdash;
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"I don't want to think about Mortan and this whole suuuu&mdash;... crunch... crunch..."
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"&mdash;"
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"I think I killed someone."
+</span>
+</p>
+
+</section>
+
+<h2 class="chapter-start">
+<span style="font-family: merriweather, 'open sans', sans-serif; color:#F0EAD6;">
+#002
+</span>
+</h2>
+
+<section>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He climbed the front steps of the school.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+It was relatively quiet, because not every family still had living members.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+When he reached the entrance, he stopped and looked up at the upper windows.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"We don't have a teacher again?"
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Then he entered the school.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+It wasn't in that bad a condition.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"At least we have a library."
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He was walking down the classroom corridor toward his own class when, suddenly, a hand landed on his shoulder.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Hadiiiiiiiiiiiiiiiiiiiiel!"
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Why didn't you come yesterday?... <em>panting</em>... <em>panting</em>... We were all worried about you. We thought maybe&mdash;"
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Hadiel knocked the hand off his shoulder.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"You mean all eight people in our class?"
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Whatever."
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+The two of them entered the classroom.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Nothing unusual was happening there.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+It was just the usual situation.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Five girls and four boys made up the class in total.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+But the decision of whether they came to school to learn or not was entirely up to them.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Hadiel didn't read because he was particularly interested in science.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He read because he was curious.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He walked up and stood in front of the board.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Without even clearing his throat, he said:
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"You idiots have to read at least one section of history today."
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"How can you stay alive without knowing anything about your past?"
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+To say he received no reaction would have been a lie.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Silence was a reaction too.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He pointed at the boy sitting in the middle of the classroom.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Elyath, do you know why this is strange? Xenon only lives for five hou&mdash;"
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Look who's here. Hadiel the scientist. You planning to talk about this for the next fifty years too?"
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"We don't need to read about this in a book to understand it. We see it in the news every day."
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+There was nothing particularly special about this conversation, really.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Elyath was supposed to be the school bully, but Hadiel was respected by everyone as well.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+You couldn't even tell whether the exchange was serious or not.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Either way, Hadiel simply said,
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Hmm."
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Then he put his bag on his desk and walked toward the library.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Elyath, as usual, sat down and continued reading his perverted comics.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+The girls, who genuinely couldn't stand him, had left an entire row empty so that he would have to sit alone.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Aside from all of that, Hadiel had one friend who was always with him.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+<strong>Flynn.</strong>
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Every day, the two of them went to the school library together because it was quiet, and because you could occasionally find things there that were genuinely difficult to find anywhere else.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+As they walked down the stairs, the cold smell of the school seemed to suffocate them.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Flynn, don't you think our school is a little too white and sterile?"
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Well, that's your opinion. But it's better for the economy this way."
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"<em>Tch</em>... Is everything about money and the economy? This school is so dry that even the teachers refuse to come here because it's frightening. We probably don't even have sixty students if you add all the other classes together. You really look like an instruction manual that came with a product."
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"I'll take that as a compliment."
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Flynn walked ahead and looked around from the last step.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He looked at Hadiel and gave him a signal.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"No one's here yet. Come on."
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Hadiel followed him.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+They entered a relatively narrow hallway.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+It wasn't exactly a secret place, and their reactions made that obvious.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+They simply kept going until, after a while, they reached an open door.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Aside from the terrible state of this school, this place smells nice. It feels like another world. Don't you think so, Hadiel?"
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Hadiel walked over to one of the bookshelves and answered from there.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"The difference is like the surface of the sea compared to the bottom of the ocean. If there were just a little more light, it would be perfect."
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Flynn clearly understood Hadiel's sense of humor, but he tried to change the subject because, in his opinion, those kinds of jokes were no place for a eulogy.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"I see. So you're going to finish the book today."
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+The book Flynn was referring to was called <strong>Werckmeister</strong>.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Even from its appearance, it was obvious that it was extremely old.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+It had a dark, almost black cover with a strange sheen to it, yet it somehow didn't draw too much attention.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Maybe it would be better to understand its subject through Hadiel's eyes.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Flynn, tell me. Have you ever seen a book with a design made of steel on its cover?"
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Steel?"
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Or a book whose subject you can't understand, where the deeper you go into it, the less you realize that you're already drowning?"
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"A science built for adaptation. Adaptation makes the pressure at the surface of the sea and in the depths of the ocean, the heat of hell and the joy of heaven, all mean the same thing. Harmony."
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Flynn had already become used to this way of speaking from Hadiel.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Not that he did it every day, but these were exactly the kinds of things Flynn had come to expect from him.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Hadiel, you aren't scary at all."
+</span>
+</p>
+
+</section>
+
+<h2 class="chapter-start">
+<span style="font-family: merriweather, 'open sans', sans-serif; color:#F0EAD6;">
+#002.5 &mdash; Defend
+</span>
+</h2>
+
+<section>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+The two of them seemed calm.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Maybe they weren't, not in their minds.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+After all, a book could be judged neither by its cover nor by its first few pages.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Hadiel sat on a wooden bench in the library, doing everything he could to finish <strong>Werckmeister</strong>.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Flynn was still choosing a book, doing one-wheel tricks around the shelves.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"I've reached the last sentence..."
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+It sounded as though Hadiel was trying to imitate someone's voice. In a joking, mocking tone, he read:
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"It says, 'To those who do not wound the strings of the heart in order to perfect them: suffering is for&mdash;'"
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He suddenly stood up.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He looked around.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He was terrified.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Flynn, did you hear that?"
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Flynn pointed at himself.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Are you talking to me?"
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Hadiel left <strong>Werckmeister</strong> open and ran toward the exit.
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"It sounded like someone moaning."
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He left Flynn alone in the library and hurried outside.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+The harder he breathed, the louder the moaning became.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+From farther away, he could see Elyath and the others looking toward the sky from outside the door.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He left the corridor and ran toward the school's main entrance.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He went outside and looked up at the sky.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He expected everything to be normal, because somehow, whenever something shouldn't be normal, it always was.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+But this time&mdash;
+</span>
+</p>
+
+<div class="sky-event">
+<p class="line green">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:21px; color:#39FF14;">
+It wasn't.
+</span>
+</p>
+</div>
+
+<p class="narration center">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He was breathing heavily.
+</span>
+</p>
+
+<p class="narration center">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+He turned toward the sky.
+</span>
+</p>
+
+<p class="dialogue green center">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#39FF14;">
+"The sky&mdash; <em>panting</em>... <em>panting</em>... what the hell is this?"
+</span>
+</p>
+
+<p class="dialogue green center">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#39FF14;">
+"Why is the air so&mdash;so heavy?"
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+The reflection in his eyes gave away the unnatural green color of the sky.
+</span>
+</p>
+
+<p class="dialogue green center">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#39FF14;">
+"What happened?"
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Flynn stepped up behind Hadiel and, in his usual tone, asked:
+</span>
+</p>
+
+<p class="dialogue">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+"Why are you all gathered here?"
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Elyath turned and pointed at the sky.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Flynn's eyes widened instantly.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+Everyone was looking at the sky.
+</span>
+</p>
+
+<p class="narration">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:16px; color:#F0EAD6;">
+But what had happened to it?
+</span>
+</p>
+
+<div class="sky-event green">
+
+<p class="line">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:21px; color:#39FF14;">
+"Wh&mdash;why? Wha&mdash;what happened? The color of the sky&mdash;"
+</span>
+</p>
+
+<p class="line">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:21px; color:#39FF14;">
+"It's&mdash;it's falling&mdash;"
+</span>
+</p>
+
+<p class="line">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:21px; color:#39FF14;">
+"Warning to the entire city&mdash;"
+</span>
+</p>
+
+<p class="line">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:21px; color:#39FF14;">
+"The sky is cracking."
+</span>
+</p>
+
+</div>
+
+<p class="defend">
+<span style="font-family: merriweather, 'open sans', sans-serif; color:#39FF14;">
+DEFEND
+</span>
+</p>
+
+<p class="separator">
+<span style="font-family: merriweather, 'open sans', sans-serif; font-size:20px; color:#F0EAD6;">
+...
+</span>
+</p>
+
+<p class="final-word">
+<span style="font-family: merriweather, 'open sans', sans-serif; color:#F0EAD6;">
+<strong>Werckmeister</strong>
+</span>
+</p>
+
+</section>
+
+</article>
 </main>
+
 </body>
 </html>
